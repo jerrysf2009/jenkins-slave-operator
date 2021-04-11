@@ -1,0 +1,7 @@
+apiVersion: webapp.jerryyu.org/v1
+kind: Jenkinsslave
+metadata:
+  name: jenkinsslave-sample
+spec:
+  # Add fields here
+  foo: bar

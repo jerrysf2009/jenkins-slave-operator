@@ -1,0 +1,7 @@
+domain: jerryyu.org
+repo: jenkins-slave
+resources:
+- group: webapp
+  kind: Jenkinsslave
+  version: v1
+version: "2"

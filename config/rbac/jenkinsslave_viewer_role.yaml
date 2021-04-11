@@ -1,0 +1,20 @@
+# permissions for end users to view jenkinsslaves.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: jenkinsslave-viewer-role
+rules:
+- apiGroups:
+  - webapp.jerryyu.org
+  resources:
+  - jenkinsslaves
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - webapp.jerryyu.org
+  resources:
+  - jenkinsslaves/status
+  verbs:
+  - get

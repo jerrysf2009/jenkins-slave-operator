@@ -1,0 +1,24 @@
+# permissions for end users to edit jenkinsslaves.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: jenkinsslave-editor-role
+rules:
+- apiGroups:
+  - webapp.jerryyu.org
+  resources:
+  - jenkinsslaves
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - webapp.jerryyu.org
+  resources:
+  - jenkinsslaves/status
+  verbs:
+  - get
