@@ -29,16 +29,18 @@ type JenkinsslaveSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// Foo is an example field of Jenkinsslave. Edit Jenkinsslave_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	JenkinsMasterURL string `json:"jenkinsmasterurl"`
 }
 
 // JenkinsslaveStatus defines the observed state of Jenkinsslave
 type JenkinsslaveStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	Status string `json:"Status"`
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:subresource:status
 
 // Jenkinsslave is the Schema for the jenkinsslaves API
 type Jenkinsslave struct {

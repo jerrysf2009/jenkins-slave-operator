@@ -42,6 +42,22 @@ func (r *JenkinsslaveReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error
 	_ = r.Log.WithValues("jenkinsslave", req.NamespacedName)
 
 	// your logic here
+	ctx := context.Background()
+    _ = r.Log.WithValues("apiexamplea", req.NamespacedName)
+
+  // Getting current CR，then print out
+    obj := &webappv1.Guestbook{}
+    if err := r.Get(ctx, req.NamespacedName, obj); err != nil {
+        log.Println(err, "Unable to fetch object")
+    } else {
+        log.Println("Starting to register to Jenkins Master", obj.Spec.JenkinsMasterURL)
+    }
+
+  // Initialize CR Status to Running
+    obj.Status.Status = "Running"
+    if err := r.Status().Update(ctx, obj); err != nil {
+        log.Println(err, "unable to update status")
+    }
 
 	return ctrl.Result{}, nil
 }
