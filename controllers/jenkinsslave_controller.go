@@ -38,19 +38,18 @@ type JenkinsslaveReconciler struct {
 // +kubebuilder:rbac:groups=webapp.jerryyu.org,resources=jenkinsslaves/status,verbs=get;update;patch
 
 func (r *JenkinsslaveReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	_ = context.Background()
-	_ = r.Log.WithValues("jenkinsslave", req.NamespacedName)
-
-	// your logic here
+	
 	ctx := context.Background()
-    _ = r.Log.WithValues("apiexamplea", req.NamespacedName)
+    _ = r.Log.WithValues("jenkinsslave", req.NamespacedName)
 
   // Getting current CR，then print out
     obj := &webappv1.Guestbook{}
     if err := r.Get(ctx, req.NamespacedName, obj); err != nil {
         log.Println(err, "Unable to fetch object")
     } else {
-        log.Println("Starting to register to Jenkins Master", obj.Spec.JenkinsMasterURL)
+		log.Println("Starting to register to Jenkins Master:", obj.Spec.JenkinsMasterURL)
+		log.Println("Jenkins slave count:", obj.Spec.Replicas)
+		// TBD: start the container and register to jenkins master
     }
 
   // Initialize CR Status to Running

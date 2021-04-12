@@ -30,6 +30,8 @@ type JenkinsslaveSpec struct {
 
 	// Foo is an example field of Jenkinsslave. Edit Jenkinsslave_types.go to remove/update
 	JenkinsMasterURL string `json:"jenkinsmasterurl"`
+	Replicas string `json:"replicas"`
+
 }
 
 // JenkinsslaveStatus defines the observed state of Jenkinsslave
